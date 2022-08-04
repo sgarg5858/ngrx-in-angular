@@ -1,1 +1,25 @@
-<p>comments works!</p>
+<ng-container *ngIf="(commentService.comments$ | async) as comments;else loading">
+    
+    <ng-container *ngIf="comments.length > 0;else apiDidNotWork">
+        
+       <div class="comments">
+        <app-comment *ngFor="let comment of comments" [comment]="comment">
+
+        </app-comment>
+       </div>
+
+    </ng-container>
+
+    <ng-template #apiDidNotWork>
+        <h1 class="error">
+            Can't load comments right now!
+        </h1>
+    </ng-template>
+
+</ng-container>
+
+<ng-template #loading>
+    <h1 class="loading">
+        Loading Comments.....
+    </h1>
+</ng-template>

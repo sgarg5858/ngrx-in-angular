@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './config.service';
+import { take } from 'rxjs';
 
 
 
@@ -24,7 +25,7 @@ import { ConfigService } from './config.service';
           // dont forget to filter null values as we are using behavior subject
           //either trigger complete event on configSubject
           // or use take(1) here
-          return configService.config$;
+          return configService.config$.pipe(take(1));
         }
       },
       deps:[ConfigService]

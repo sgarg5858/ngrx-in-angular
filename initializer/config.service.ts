@@ -28,8 +28,8 @@ export class ConfigService {
         next:(config:Config)=>{
           console.log(config)
           this.configSubject.next(config);
-          //this observable must complete!
-          this.configSubject.complete();
+          // this observable must not complete as services will subscribe to this to get data !
+          // this.configSubject.complete();
         },
         error:(error:any)=>{
           this.configSubject.error("Can't fetch Config Right NOW");
