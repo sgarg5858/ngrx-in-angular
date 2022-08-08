@@ -8,9 +8,14 @@ export const comments = createSelector(
     getCommentState,
     (commentState:CommentState)=>commentState.comments
     )
+
 export const filterBy = createSelector(
     getCommentState,
     (commentState:CommentState)=>commentState.filterBy
+)        
+export const didApiWork = createSelector(
+    getCommentState,
+    (commentState:CommentState)=>commentState.didApiWork
 )    
 export const filteredComments = createSelector(
     comments,

@@ -8,11 +8,13 @@ export const COMMENTS_FEATURE_KEY = "comments";
 export interface CommentState{
     comments:Comment[]|null;
     filterBy:string;
+    didApiWork:boolean;
 }
 
 export const initialCommentState :CommentState={
     comments:null,
-    filterBy:""
+    filterBy:"",
+    didApiWork:false
 }
 
 export const commentReducer = createReducer(
@@ -20,13 +22,15 @@ export const commentReducer = createReducer(
     on(CommentActions.loadCommentsSuccess,(state,action)=>{
         return {
             ...state,
-            comments:[...action.comments]
+            comments:[...action.comments],
+            didApiWork:true
         }
     }),
     on(CommentActions.loadCommentsFailed,(state,action)=>{
         return {
             ...state,
-            comments:[]
+            comments:[],
+            didApiWork:false
         }
     }),
     on(CommentActions.filterComments,(state,action)=>{

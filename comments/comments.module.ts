@@ -10,8 +10,6 @@ import {EffectsModule} from '@ngrx/effects'
 import { CommentEffectService } from './+state/comments/comments.effects';
 import { SharedModule } from '../shared/shared.module';
 import { CommentsContainerComponent } from './comments-container/comments-container.component';
-import {MatInputModule} from '@angular/material/input'
-import {MatFormFieldModule} from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -22,8 +20,6 @@ import {MatFormFieldModule} from '@angular/material/form-field'
   providers:[CommentsFacade],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
     RouterModule.forChild([
       {
         path:'',

@@ -8,6 +8,7 @@ export class CommentsFacade{
     constructor(private readonly store:Store){}
 
     public readonly comments$ = this.store.select(CommentSelectors.filteredComments);
+    public readonly didAPIWork$ = this.store.select(CommentSelectors.didApiWork);
 
     getComments()
     {

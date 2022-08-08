@@ -1,5 +1,10 @@
-<div class="comments">
-    <app-comment *ngFor="let comment of comments" [comment]="comment">
-
-    </app-comment>
-   </div>
+<ng-container *ngIf="comments.length > 0;else noMatching">
+    <div class="comments">
+        <app-comment *ngFor="let comment of comments" [comment]="comment">
+    
+        </app-comment>
+       </div>
+</ng-container>
+<ng-template #noMatching>
+    <h1>No Matching Comments</h1>
+</ng-template>

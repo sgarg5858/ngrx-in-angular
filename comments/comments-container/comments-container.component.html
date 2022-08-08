@@ -1,7 +1,7 @@
 <ng-container *ngIf="(commentFacade.comments$ | async) as comments;else loading">
     
 
-    <ng-container *ngIf="comments.length > 0;else apiDidNotWork">
+    <ng-container *ngIf="(commentFacade.didAPIWork$ | async);else apiDidNotWork">
         
       <div class="main">
 
@@ -10,6 +10,7 @@
         <app-comments [comments]="comments"></app-comments>
  
       </div>
+      
     </ng-container>
 
     <ng-template #apiDidNotWork>

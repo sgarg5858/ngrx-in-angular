@@ -10,8 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input'
-import {MatFormFieldModule} from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -26,8 +24,6 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
