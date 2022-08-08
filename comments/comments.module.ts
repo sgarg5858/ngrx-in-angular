@@ -4,27 +4,34 @@ import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { COMMENTS_FEATURE_KEY, COMMENT_REDUCERS } from './+state/comments/comments.reducer';
+import { commentReducer, COMMENTS_FEATURE_KEY } from './+state/comments/comments.reducer';
 import { CommentsFacade } from './+state/comments/comments.facade';
 import {EffectsModule} from '@ngrx/effects'
 import { CommentEffectService } from './+state/comments/comments.effects';
-
+import { SharedModule } from '../shared/shared.module';
+import { CommentsContainerComponent } from './comments-container/comments-container.component';
+import {MatInputModule} from '@angular/material/input'
+import {MatFormFieldModule} from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    CommentsContainerComponent
   ],
   providers:[CommentsFacade],
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forChild([
       {
         path:'',
-        component:CommentsComponent
+        component:CommentsContainerComponent
       }
     ]),
-    StoreModule.forFeature(COMMENTS_FEATURE_KEY,COMMENT_REDUCERS),
+    SharedModule,
+    StoreModule.forFeature(COMMENTS_FEATURE_KEY,commentReducer),
     EffectsModule.forFeature([CommentEffectService])
   ]
 })

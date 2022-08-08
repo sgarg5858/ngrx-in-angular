@@ -7,12 +7,16 @@ export class CommentsFacade{
 
     constructor(private readonly store:Store){}
 
-    public readonly comments$ = this.store.select(CommentSelectors.comments);
+    public readonly comments$ = this.store.select(CommentSelectors.filteredComments);
 
     getComments()
     {
         console.log("Dispatching Actions")
         this.store.dispatch(CommentActions.loadComments());
+    }
+    filterCommentsBy(text:string)
+    {
+        this.store.dispatch(CommentActions.filterComments({filterBy:text}));
     }
 
 }

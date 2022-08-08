@@ -6,14 +6,16 @@ export const COMMENTS_FEATURE_KEY = "comments";
 
 
 export interface CommentState{
-    comments:Comment[]|null
+    comments:Comment[]|null;
+    filterBy:string;
 }
 
 export const initialCommentState :CommentState={
-    comments:null
+    comments:null,
+    filterBy:""
 }
 
-const commentReducer = createReducer(
+export const commentReducer = createReducer(
     initialCommentState,
     on(CommentActions.loadCommentsSuccess,(state,action)=>{
         return {
@@ -26,9 +28,11 @@ const commentReducer = createReducer(
             ...state,
             comments:[]
         }
+    }),
+    on(CommentActions.filterComments,(state,action)=>{
+        return {
+            ...state,
+            filterBy:action.filterBy
+        }
     })
 )
-export function COMMENT_REDUCERS(state: CommentState | undefined, action: Action) {
-    return commentReducer(state, action);
-  }
-  

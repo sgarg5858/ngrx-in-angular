@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject, concatMap, delay, of, retryWhen, take, throwError } from 'rxjs';
 import { Config, ConfigService } from '../initializer/config.service';
 
 export interface Comment{
@@ -53,7 +53,17 @@ export class CommentService {
 
   loadComments()
   {
-    return this.httpClient.get<Comment[]>(`${this.baseUrl}comments`);
+    return this.httpClient.get<Comment[]>(`${this.baseUrl}comments`).pipe(
+      retryWhen((errors) => errors.pipe(
+        concatMap((error,index)=>{
+          if(index>2)
+          {
+            return throwError(()=>new Error(error));
+          }
+          return of(error).pipe(delay(1000));
+        })
+      ) )
+    );
   }
 
 
