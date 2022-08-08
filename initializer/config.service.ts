@@ -17,6 +17,7 @@ export class ConfigService {
    }
 
   private configSubject = new BehaviorSubject<Config|null>(null);
+  
   public readonly config$ = this.configSubject.asObservable()
   .pipe(filter((config)=>config!=null));
 

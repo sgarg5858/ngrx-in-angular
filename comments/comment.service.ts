@@ -19,12 +19,14 @@ export class CommentService {
   private baseUrl:string="";
 
   constructor(private configService:ConfigService,private httpClient:HttpClient) {
+
     this.configService.config$.pipe(take(1)).subscribe((config:Config|null)=>{
       if(config!=null)
       {
         this.baseUrl=config.baseURL;
       }
     })
+    
    }
 
   private commentBehaviorSubject = new BehaviorSubject<Comment[]|null>(null);
@@ -47,6 +49,11 @@ export class CommentService {
       }
     })
 
+  }
+
+  loadComments()
+  {
+    return this.httpClient.get<Comment[]>(`${this.baseUrl}comments`);
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CommentService } from '../comment.service';
+import { CommentsFacade } from '../+state/comments/comments.facade';
 
 @Component({
   selector: 'app-comments',
@@ -8,7 +8,7 @@ import { CommentService } from '../comment.service';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor( @Inject(CommentService) public commentService:CommentService) { }
+  constructor( @Inject(CommentsFacade) public commentService:CommentsFacade) { }
 
   ngOnInit(): void {
 
