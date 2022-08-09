@@ -20,6 +20,8 @@ export const initialCommentState :CommentState={
 export const commentReducer = createReducer(
     initialCommentState,
     on(CommentActions.loadCommentsSuccess,(state,action)=>{
+        //mutating action
+        // action.comments=[...action.comments]
         return {
             ...state,
             comments:[...action.comments],
@@ -27,6 +29,7 @@ export const commentReducer = createReducer(
         }
     }),
     on(CommentActions.loadCommentsFailed,(state,action)=>{
+        
         return {
             ...state,
             comments:[],
@@ -38,5 +41,8 @@ export const commentReducer = createReducer(
             ...state,
             filterBy:action.filterBy
         }
+        // //this mutates store state!
+        // state.filterBy=action.filterBy;
+        // return state
     })
 )

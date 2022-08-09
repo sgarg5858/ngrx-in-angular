@@ -13,5 +13,5 @@ export const loadCommentsFailed = createAction("[Comments API] load Comments Fai
 
 export const filterComments = createAction(
     "[Comment Screen Input] filter comments",
-    props<{filterBy:string}>()
+    props<{filterBy:string,map:Map<string,string>}>()
     )

@@ -20,7 +20,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     InitializerModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}, {
+      runtimeChecks:{
+        strictStateImmutability:true,
+        strictActionImmutability:true,
+        strictActionWithinNgZone:true,
+        strictActionTypeUniqueness:true,
+        strictStateSerializability:true,
+        strictActionSerializability:true
+      }      
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule,

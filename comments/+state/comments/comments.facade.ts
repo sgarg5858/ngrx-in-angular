@@ -17,7 +17,7 @@ export class CommentsFacade{
     }
     filterCommentsBy(text:string)
     {
-        this.store.dispatch(CommentActions.filterComments({filterBy:text}));
+        this.store.dispatch(CommentActions.filterComments({filterBy:text,map:new Map<string,string>()}));
     }
 
 }

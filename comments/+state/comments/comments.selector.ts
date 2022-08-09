@@ -22,5 +22,4 @@ export const filteredComments = createSelector(
     filterBy,
     (comments,filterBy)=>{
         return comments?.filter((comment:Comment)=>comment.email.includes(filterBy))
-    }
-    )    
+    })    
