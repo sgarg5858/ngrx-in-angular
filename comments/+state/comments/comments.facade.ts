@@ -9,7 +9,7 @@ export class CommentsFacade{
 
     public readonly comments$ = this.store.select(CommentSelectors.filteredComments);
     public readonly didAPIWork$ = this.store.select(CommentSelectors.didApiWork);
-
+    public readonly filterBy$ = this.store.select(CommentSelectors.filterBy);
     getComments()
     {
         console.log("Dispatching Actions")
@@ -17,7 +17,7 @@ export class CommentsFacade{
     }
     filterCommentsBy(text:string)
     {
-        this.store.dispatch(CommentActions.filterComments({filterBy:text,map:new Map<string,string>()}));
+        this.store.dispatch(CommentActions.filterComments({filterBy:text}));
     }
 
 }

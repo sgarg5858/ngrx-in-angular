@@ -5,7 +5,11 @@
         
       <div class="main">
 
-        <app-custom-input (inputChanged)="filterCommentsBy($event)" label="Filter Comments"></app-custom-input>
+        <app-custom-input 
+        (inputChanged)="filterCommentsBy($event)" 
+        label="Filter Comments"
+        [initialValue]="(commentFacade.filterBy$ | async) "
+        ></app-custom-input>
 
         <app-comments [comments]="comments"></app-comments>
  

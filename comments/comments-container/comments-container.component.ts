@@ -9,6 +9,7 @@ import { CommentsFacade } from '../+state/comments/comments.facade';
 export class CommentsContainerComponent implements OnInit {
 
   constructor(public commentFacade:CommentsFacade) { }
+  
 
   ngOnInit(): void {
     this.commentFacade.getComments();

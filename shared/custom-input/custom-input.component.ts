@@ -10,6 +10,10 @@ import { Subscription } from 'rxjs';
 })
 export class CustomInputComponent implements OnInit,OnDestroy {
 
+  @Input('initialValue') set initialValue(value:string |null)
+  {
+    this.myInput.setValue(value,{emitEvent:false,onlySelf:true})
+  }
   constructor() { }
  @Input() label:string="";
  @Output() inputChanged = new EventEmitter<string>();
