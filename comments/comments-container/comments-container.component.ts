@@ -12,7 +12,7 @@ export class CommentsContainerComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.commentFacade.getComments();
+    // this.commentFacade.getComments();
   }
 
   filterCommentsBy(text:string)

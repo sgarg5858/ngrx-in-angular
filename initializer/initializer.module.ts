@@ -2,6 +2,8 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './config.service';
 import { take } from 'rxjs';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AddBaseUrlInterceptorService } from '../http_interceptors/add-base-url-interceptor.service';
 
 
 
@@ -29,6 +31,11 @@ import { take } from 'rxjs';
         }
       },
       deps:[ConfigService]
+    },
+     {
+      provide:HTTP_INTERCEPTORS,
+      multi:true,
+      useClass:AddBaseUrlInterceptorService
     }
   ]
 })

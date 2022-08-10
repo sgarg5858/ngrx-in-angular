@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
-import {Actions,createEffect,ofType} from '@ngrx/effects'
+import {Actions,createEffect,ofType,OnInitEffects} from '@ngrx/effects'
+import { Action } from "@ngrx/store";
 import { catchError, concatMap, map, of } from "rxjs";
 import { CommentService } from "../../comment.service";
 import * as CommentActions from './comments.actions'
 import { Comment } from "./comments.model";
 @Injectable()
-export class CommentEffectService{
+export class CommentEffectService implements OnInitEffects{
 
     constructor(private actions$:Actions,private commentsService:CommentService){}
 
@@ -18,5 +19,9 @@ export class CommentEffectService{
             ))
             )
         )
+        ngrxOnInitEffects(): Action {
+            console.log("Comment Effects");
+            return CommentActions.loadComments();
+        }
 
 }

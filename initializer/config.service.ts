@@ -14,6 +14,7 @@ export interface Config{
 export class ConfigService {
   
   constructor(@Inject(ENV) private environment:Environment,private httpClient:HttpClient) {
+    console.log(this.environment)
    }
 
   private configSubject = new BehaviorSubject<Config|null>(null);
@@ -24,6 +25,7 @@ export class ConfigService {
   //add retry functionality with 200ms delay!
   fetchConfig()
   {
+    console.log("HELLO")
      this.httpClient.get<Config>(this.environment.configUrl).subscribe(
       {
         next:(config:Config)=>{

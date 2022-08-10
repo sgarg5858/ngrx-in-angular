@@ -53,7 +53,8 @@ export class CommentService {
 
   loadComments()
   {
-    return this.httpClient.get<Comment[]>(`${this.baseUrl}comments`).pipe(
+    // return this.httpClient.get<Comment[]>(`${this.baseUrl}comments`).pipe(
+      return this.httpClient.get<Comment[]>(`comments`).pipe(
       retryWhen((errors) => errors.pipe(
         concatMap((error,index)=>{
           if(index>2)
